@@ -95,6 +95,7 @@
 		F3681A4C2C6A5F5500A29862 /* banquemisr.challenge05.themoviedb */ = {
 			isa = PBXGroup;
 			children = (
+				F3D320AC2C6A7DF200BDEBF3 /* Resources */,
 				F3681A7A2C6A600600A29862 /* Supporting Files */,
 				F3681A562C6A5F5700A29862 /* Preview Content */,
 			);
@@ -130,11 +131,18 @@
 			isa = PBXGroup;
 			children = (
 				F3681A552C6A5F5700A29862 /* banquemisr_challenge05_themoviedb.entitlements */,
-				F3681A532C6A5F5700A29862 /* Assets.xcassets */,
 				F3681A4D2C6A5F5500A29862 /* TheMovieDBApp.swift */,
 				F3D320AA2C6A7B8F00BDEBF3 /* SwiftUIView.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F3D320AC2C6A7DF200BDEBF3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F3681A532C6A5F5700A29862 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
