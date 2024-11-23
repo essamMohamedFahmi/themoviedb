@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct TheMovieDBApp: App {
-    
     // MARK: - Body
     
     var body: some Scene {
         WindowGroup {
+            // TO be replaced
             SwiftUIView()
         }
     }
