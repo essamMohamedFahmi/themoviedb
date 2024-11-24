@@ -23,6 +23,8 @@
 		F3DA93CA2CF2587C00208216 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93C92CF2587C00208216 /* ViewModel.swift */; };
 		F3DA93D12CF2A95700208216 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93D02CF2A95700208216 /* MovieRepository.swift */; };
 		F3DA93D42CF2A9F000208216 /* MovieRepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93D32CF2A9F000208216 /* MovieRepositoryProvider.swift */; };
+		F3DA93D62CF2AC8400208216 /* FetchMovieDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93D52CF2AC8400208216 /* FetchMovieDetailsUseCase.swift */; };
+		F3DA93D82CF2AC8E00208216 /* FetchMovieUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93D72CF2AC8E00208216 /* FetchMovieUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		F3DA93C92CF2587C00208216 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		F3DA93D02CF2A95700208216 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		F3DA93D32CF2A9F000208216 /* MovieRepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryProvider.swift; sourceTree = "<group>"; };
+		F3DA93D52CF2AC8400208216 /* FetchMovieDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieDetailsUseCase.swift; sourceTree = "<group>"; };
+		F3DA93D72CF2AC8E00208216 /* FetchMovieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,8 @@
 		F3DA93CC2CF2649800208216 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				F3DA93D52CF2AC8400208216 /* FetchMovieDetailsUseCase.swift */,
+				F3DA93D72CF2AC8E00208216 /* FetchMovieUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -384,7 +390,9 @@
 			files = (
 				F3DA93C82CF250BE00208216 /* MovieModels.swift in Sources */,
 				F3DA93CA2CF2587C00208216 /* ViewModel.swift in Sources */,
+				F3DA93D62CF2AC8400208216 /* FetchMovieDetailsUseCase.swift in Sources */,
 				F3D320AB2C6A7B8F00BDEBF3 /* SwiftUIView.swift in Sources */,
+				F3DA93D82CF2AC8E00208216 /* FetchMovieUseCase.swift in Sources */,
 				F3DA93C12CF24D3D00208216 /* APIModels.swift in Sources */,
 				F3681A4E2C6A5F5500A29862 /* TheMovieDBApp.swift in Sources */,
 				F3DA93BD2CF24D0A00208216 /* APIClient.swift in Sources */,
