@@ -21,6 +21,8 @@
 		F3DA93C62CF250A500208216 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93C52CF250A500208216 /* MovieService.swift */; };
 		F3DA93C82CF250BE00208216 /* MovieModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93C72CF250BE00208216 /* MovieModels.swift */; };
 		F3DA93CA2CF2587C00208216 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93C92CF2587C00208216 /* ViewModel.swift */; };
+		F3DA93D12CF2A95700208216 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93D02CF2A95700208216 /* MovieRepository.swift */; };
+		F3DA93D42CF2A9F000208216 /* MovieRepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93D32CF2A9F000208216 /* MovieRepositoryProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		F3DA93C52CF250A500208216 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		F3DA93C72CF250BE00208216 /* MovieModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModels.swift; sourceTree = "<group>"; };
 		F3DA93C92CF2587C00208216 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F3DA93D02CF2A95700208216 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
+		F3DA93D32CF2A9F000208216 /* MovieRepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +169,8 @@
 		F39F02012CF03023001ED4D5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				F39F02062CF03069001ED4D5 /* Services */,
+				F3DA93D22CF2A9C800208216 /* Repositories */,
+				F39F02062CF03069001ED4D5 /* Remote */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -173,6 +178,8 @@
 		F39F02022CF03029001ED4D5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F3DA93CF2CF2A93D00208216 /* Repositories */,
+				F3DA93CC2CF2649800208216 /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -185,12 +192,13 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		F39F02062CF03069001ED4D5 /* Services */ = {
+		F39F02062CF03069001ED4D5 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				F3DA93B92CF24CC500208216 /* Remote */,
+				F3DA93BB2CF24CD100208216 /* MovieEndpoint */,
+				F3DA93BA2CF24CCD00208216 /* Core */,
 			);
-			path = Services;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		F3D320AC2C6A7DF200BDEBF3 /* Resources */ = {
@@ -199,15 +207,6 @@
 				F3681A532C6A5F5700A29862 /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		F3DA93B92CF24CC500208216 /* Remote */ = {
-			isa = PBXGroup;
-			children = (
-				F3DA93BB2CF24CD100208216 /* MovieEndpoint */,
-				F3DA93BA2CF24CCD00208216 /* Core */,
-			);
-			path = Remote;
 			sourceTree = "<group>";
 		};
 		F3DA93BA2CF24CCD00208216 /* Core */ = {
@@ -223,11 +222,34 @@
 		F3DA93BB2CF24CD100208216 /* MovieEndpoint */ = {
 			isa = PBXGroup;
 			children = (
-				F3DA93C32CF24F7600208216 /* MovieEndpoint.swift */,
 				F3DA93C52CF250A500208216 /* MovieService.swift */,
+				F3DA93C32CF24F7600208216 /* MovieEndpoint.swift */,
 				F3DA93C72CF250BE00208216 /* MovieModels.swift */,
 			);
 			path = MovieEndpoint;
+			sourceTree = "<group>";
+		};
+		F3DA93CC2CF2649800208216 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F3DA93CF2CF2A93D00208216 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F3DA93D02CF2A95700208216 /* MovieRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F3DA93D22CF2A9C800208216 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F3DA93D32CF2A9F000208216 /* MovieRepositoryProvider.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,7 +390,9 @@
 				F3DA93BD2CF24D0A00208216 /* APIClient.swift in Sources */,
 				F3DA93BF2CF24D2000208216 /* APIEndpoint.swift in Sources */,
 				F3DA93C42CF24F7600208216 /* MovieEndpoint.swift in Sources */,
+				F3DA93D12CF2A95700208216 /* MovieRepository.swift in Sources */,
 				F3DA93C62CF250A500208216 /* MovieService.swift in Sources */,
+				F3DA93D42CF2A9F000208216 /* MovieRepositoryProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
