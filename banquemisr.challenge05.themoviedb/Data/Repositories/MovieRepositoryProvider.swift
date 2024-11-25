@@ -15,7 +15,7 @@ final class MovieRepositoryProvider: MovieRepository {
         self.service = service
     }
 
-    func fetchMovies(category: MovieCategory) -> AnyPublisher<[MovieDomainModel], APIError> {
+    func fetchMovies(category: String) -> AnyPublisher<[MovieDomainModel], APIError> {
         service.fetchMovies(category: category)
             .compactMap{ [weak self] in self?.mapper.mapToDomain($0.results) }
             .eraseToAnyPublisher()

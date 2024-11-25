@@ -7,23 +7,6 @@
 
 import SwiftUI
 
-enum MovieCategory: String {
-    case nowPlaying = "now_playing"
-    case popular = "popular"
-    case upcoming = "upcoming"
-    
-    var displayName: String {
-        switch self {
-        case .nowPlaying:
-            "Now Playing"
-        case .popular:
-            "Popular"
-        case .upcoming:
-            "Upcoming"
-        }
-    }
-}
-
 struct MoviesTabView: View {
     private let factory: PresentationFactory
 

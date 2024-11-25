@@ -8,7 +8,7 @@
 import Foundation
 
 enum MovieEndpoint: APIEndpoint {
-    case fetchMovies(category: MovieCategory)
+    case fetchMovies(category: String)
     case movieDetails(movieID: Int)
     
     var baseURL: URL {
@@ -19,7 +19,7 @@ enum MovieEndpoint: APIEndpoint {
     var path: String {
         switch self {
         case let .fetchMovies(category):
-            return "/movie/\(category.rawValue)"
+            return "/movie/\(category)"
         case let .movieDetails(movieID):
             return "/movie/\(movieID)"
         }

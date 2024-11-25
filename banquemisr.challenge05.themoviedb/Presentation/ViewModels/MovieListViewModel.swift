@@ -33,7 +33,8 @@ final class MovieListViewModel: ObservableObject {
 
     func fetchMovies() {
         isLoading = true
-        fetchMoviesUseCase.execute(category: category)
+        let categoryKey = MovieCategoryMapper.toKey(category)
+        fetchMoviesUseCase.execute(category: categoryKey)
             .map { movies in
                 movies.map { Movie(from: $0) }
             }
