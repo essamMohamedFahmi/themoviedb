@@ -12,7 +12,7 @@ import Foundation
 
 protocol MovieService {
     func fetchMovies(category: MovieCategory) -> AnyPublisher<MovieList, APIError>
-    func movieDetails(movieID: Int) -> AnyPublisher<Movie, APIError>
+    func movieDetails(movieID: Int) -> AnyPublisher<MovieDetailDataModel, APIError>
 }
 
 // MARK: - MovieServiceProvider
@@ -24,7 +24,7 @@ class MovieServiceProvider: MovieService {
         apiClient.request(MovieEndpoint.fetchMovies(category: category))
     }
     
-    func movieDetails(movieID: Int) -> AnyPublisher<Movie, APIError> {
+    func movieDetails(movieID: Int) -> AnyPublisher<MovieDetailDataModel, APIError> {
         apiClient.request(MovieEndpoint.movieDetails(movieID: movieID))
     }
 }

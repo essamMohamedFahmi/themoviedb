@@ -8,17 +8,17 @@
 import Combine
 
 protocol FetchMoviesUseCase {
-    func execute(category: MovieCategory) -> AnyPublisher<[Movie], APIError>
+    func execute(category: MovieCategory) -> AnyPublisher<[MovieDomainModel], APIError>
 }
 
-final class FetchMoviesUseCaseImpl: FetchMoviesUseCase {
+final class FetchMoviesUseCaseProvider: FetchMoviesUseCase {
     private let repository: MovieRepository
 
     init(repository: MovieRepository) {
         self.repository = repository
     }
 
-    func execute(category: MovieCategory) -> AnyPublisher<[Movie], APIError> {
+    func execute(category: MovieCategory) -> AnyPublisher<[MovieDomainModel], APIError> {
         return repository.fetchMovies(category: category)
     }
 }

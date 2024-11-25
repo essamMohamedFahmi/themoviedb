@@ -9,19 +9,21 @@ import Combine
 
 final class MovieRepositoryProvider: MovieRepository {
     private let service: MovieService
+    private let mapper = MovieMapper()
 
     init(service: MovieService) {
         self.service = service
     }
 
-    func fetchMovies(category: MovieCategory) -> AnyPublisher<[Movie], APIError> {
+    func fetchMovies(category: MovieCategory) -> AnyPublisher<[MovieDomainModel], APIError> {
         service.fetchMovies(category: category)
-            .map { $0.results }
+            .compactMap{ [weak self] in self?.mapper.mapToDomain($0.results) }
             .eraseToAnyPublisher()
     }
 
-    func fetchMovieDetails(movieId: Int) -> AnyPublisher<Movie, APIError> {
+    func fetchMovieDetails(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, APIError> {
         service.movieDetails(movieID: movieId)
+            .compactMap{ [weak self] in self?.mapper.mapToDomain($0) }
             .eraseToAnyPublisher()
     }
 }
