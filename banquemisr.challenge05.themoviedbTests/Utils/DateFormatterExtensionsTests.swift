@@ -21,6 +21,6 @@ final class DateFormatterExtensionsTests: XCTestCase {
         XCTAssertNotNil(date, "The API formatter should parse the date string successfully.")
         
         let displayString = DateFormatter.displayFormatter.string(from: date!)
-        XCTAssertEqual(displayString, "Nov 22, 2024", "The display formatter should correctly format the date for presentation.")
+        XCTAssertEqual(displayString, "22 Nov 2024", "The display formatter should correctly format the date for presentation.")
     }
 }
