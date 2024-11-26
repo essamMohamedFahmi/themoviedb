@@ -9,11 +9,11 @@ import Foundation
 
 // MARK: - Remote Models
 
-struct MovieList: Decodable {
+struct MovieList: Codable, Equatable {
     let results: [MovieDataModel]
 }
 
-struct MovieDataModel: Decodable {
+struct MovieDataModel: Codable, Equatable {
     let id: Int
     let title: String
     let releaseDate: String
@@ -26,7 +26,7 @@ struct MovieDataModel: Decodable {
     }
 }
 
-struct MovieDetailDataModel: Decodable {
+struct MovieDetailDataModel: Codable, Equatable {
     let id: Int
     let title, overview: String
     let budget, revenue, runtime: Int
