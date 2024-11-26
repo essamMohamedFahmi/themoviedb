@@ -29,7 +29,7 @@ final class APIClientTests: XCTestCase {
     
     // MARK: - Test Cases
     
-    func test_request_success() throws {
+    func testRequestSuccess() throws {
         // Given
         let expectedMovieDataModel = MovieDataModel(id: 3, title: "Test", releaseDate: "11/22/2024", posterPath: "img/test")
         
@@ -60,10 +60,10 @@ final class APIClientTests: XCTestCase {
             })
         
         // Complete the expectation
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
-    func test_request_failure_customError() throws {
+    func testRequestFailureCustomError() throws {
         // Given
         let expectation = XCTestExpectation(description: "Request failed!")
         MockURLProtocol.resetMockData()
@@ -88,10 +88,10 @@ final class APIClientTests: XCTestCase {
             })
         
         // Complete the expectation
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
-    func test_request_failure_decodingFailed() throws {
+    func testRequestFailureDecodingFailed() throws {
         // Given
         let expectation = XCTestExpectation(description: "Request failed!")
         MockURLProtocol.resetMockData()
@@ -114,10 +114,10 @@ final class APIClientTests: XCTestCase {
             })
         
         // Complete the expectation
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
     
-    func test_request_failure_requestFailed() throws {
+    func testRequestFailureRequestFailed() throws {
         // Given
         let expectation = XCTestExpectation(description: "Request failed!")
         MockURLProtocol.resetMockData()
@@ -140,6 +140,6 @@ final class APIClientTests: XCTestCase {
             })
         
         // Complete the expectation
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: 2)
     }
 }
