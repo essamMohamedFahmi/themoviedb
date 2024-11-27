@@ -11,6 +11,8 @@ TheMovieDB is an iOS application built with SwiftUI and Combine that provides a 
 
 - **Movie Details**: Tap on any movie to view detailed information, including the movie's overview, genres, runtime, and more.
 
+- **Offline Caching**: Movie data is cached locally to provide access even when offline.
+
 ## Architecture
 
 The app follows Domain-Driven Design (DDD) principles and implements the MVVM (Model-View-ViewModel) architecture pattern:
