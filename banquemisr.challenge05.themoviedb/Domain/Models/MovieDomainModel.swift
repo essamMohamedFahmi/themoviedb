@@ -10,6 +10,6 @@ import Foundation
 struct MovieDomainModel {
     let id: Int
     let title: String
-    let releaseDate: Date
+    let releaseDate: String
     let posterURL: URL
 }

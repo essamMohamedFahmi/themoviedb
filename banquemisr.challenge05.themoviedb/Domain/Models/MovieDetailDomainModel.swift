@@ -13,6 +13,6 @@ struct MovieDetailDomainModel {
     let budget, revenue, runtime: Int
     let imdbID: String
     let popularity: Double
+    let releaseDate: String
     let posterURL: URL
-    let releaseDate: Date
 }

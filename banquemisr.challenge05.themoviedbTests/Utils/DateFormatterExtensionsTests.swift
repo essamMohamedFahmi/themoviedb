@@ -10,17 +10,34 @@ import XCTest
 @testable import banquemisr_challenge05_themoviedb
 
 final class DateFormatterExtensionsTests: XCTestCase {
-    func testAPIFormatter() {
-        let dateString = "2024-11-22"
-        let date = DateFormatter.apiFormatter.date(from: dateString)
-        XCTAssertNotNil(date, "The API formatter should parse the date string successfully.")
-    }
-
     func testDisplayFormatter() {
-        let date = DateFormatter.apiFormatter.date(from: "2024-11-22")
-        XCTAssertNotNil(date, "The API formatter should parse the date string successfully.")
+        let dateString = "2024-11-25"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let expectedDate = dateFormatter.date(from: dateString)
         
-        let displayString = DateFormatter.displayFormatter.string(from: date!)
-        XCTAssertEqual(displayString, "22 Nov 2024", "The display formatter should correctly format the date for presentation.")
+        let formattedDate = DateFormatter.displayFormatter.string(from: expectedDate!)
+        let expectedFormattedString = "25 Nov 2024"
+        
+        XCTAssertEqual(formattedDate, expectedFormattedString, "The formatted date should match the expected formatted string.")
+    }
+    
+    func testInvalidDateString() {
+        let invalidDateString = "invalid-date"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let invalidDate = dateFormatter.date(from: invalidDateString)
+        
+        XCTAssertNil(invalidDate, "The invalid date string should not convert to a valid date.")
+    }
+    
+    func testEmptyString() {
+        let emptyString = ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let emptyDate = dateFormatter.date(from: emptyString)
+        
+        XCTAssertNil(emptyDate, "The empty string should not convert to a valid date.")
     }
 }
+

@@ -14,7 +14,6 @@ final class MovieDetailViewModel: ObservableObject {
     @Published var movieDetail: MovieDetail?
     @Published var errorMessage = ""
     @Published var hasError = false
-    @Published var isLoading = false
     
     // MARK: - Private Properties
 
@@ -35,12 +34,10 @@ final class MovieDetailViewModel: ObservableObject {
     // MARK: - Methods
     
     func fetchMovieDetails() {
-        isLoading = true
         fetchMovieDetailsUseCase.execute(movieId: movieId)
             .map { MovieDetail(from: $0) }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
-                self?.isLoading = false
                     if case let .failure(error) = completion {
                         self?.hasError = true
                         self?.errorMessage = error.localizedDescription

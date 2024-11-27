@@ -24,6 +24,10 @@
 		F39992422CF550590094B63B /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39992412CF550590094B63B /* XCTestCase+Extensions.swift */; };
 		F39992442CF554580094B63B /* FetchMovieUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39992432CF554580094B63B /* FetchMovieUseCaseTests.swift */; };
 		F39992462CF554DD0094B63B /* FetchMovieDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39992452CF554DD0094B63B /* FetchMovieDetailsUseCaseTests.swift */; };
+		F39992492CF69D250094B63B /* MovieListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39992482CF69D250094B63B /* MovieListViewModelTests.swift */; };
+		F399924B2CF69D430094B63B /* MovieDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399924A2CF69D430094B63B /* MovieDetailViewModelTests.swift */; };
+		F399924D2CF6A1B50094B63B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399924C2CF6A1B50094B63B /* String+Extensions.swift */; };
+		F399924F2CF6A4260094B63B /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399924E2CF6A4260094B63B /* StringExtensionsTests.swift */; };
 		F3DA93BD2CF24D0A00208216 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93BC2CF24D0A00208216 /* APIClient.swift */; };
 		F3DA93BF2CF24D2000208216 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93BE2CF24D2000208216 /* APIEndpoint.swift */; };
 		F3DA93C12CF24D3D00208216 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93C02CF24D3D00208216 /* APIModels.swift */; };
@@ -88,6 +92,10 @@
 		F39992412CF550590094B63B /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
 		F39992432CF554580094B63B /* FetchMovieUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieUseCaseTests.swift; sourceTree = "<group>"; };
 		F39992452CF554DD0094B63B /* FetchMovieDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMovieDetailsUseCaseTests.swift; sourceTree = "<group>"; };
+		F39992482CF69D250094B63B /* MovieListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTests.swift; sourceTree = "<group>"; };
+		F399924A2CF69D430094B63B /* MovieDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelTests.swift; sourceTree = "<group>"; };
+		F399924C2CF6A1B50094B63B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		F399924E2CF6A4260094B63B /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		F3DA93BC2CF24D0A00208216 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F3DA93BE2CF24D2000208216 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		F3DA93C02CF24D3D00208216 /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
@@ -184,10 +192,11 @@
 			isa = PBXGroup;
 			children = (
 				F39992402CF5504E0094B63B /* Extensions */,
-				F399923D2CF54E540094B63B /* Data */,
-				F39992342CF549440094B63B /* Mocks */,
-				F39992312CF547F10094B63B /* Networking */,
+				F39992472CF557C70094B63B /* Presentation */,
 				F39992302CF547EC0094B63B /* Domain */,
+				F399923D2CF54E540094B63B /* Data */,
+				F39992312CF547F10094B63B /* Networking */,
+				F39992342CF549440094B63B /* Mocks */,
 				F3DA93FA2CF4DFC100208216 /* Utils */,
 			);
 			path = banquemisr.challenge05.themoviedbTests;
@@ -270,6 +279,15 @@
 				F39992412CF550590094B63B /* XCTestCase+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F39992472CF557C70094B63B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F39992482CF69D250094B63B /* MovieListViewModelTests.swift */,
+				F399924A2CF69D430094B63B /* MovieDetailViewModelTests.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		F39F02012CF03023001ED4D5 /* Data */ = {
@@ -416,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				F3DA93F82CF4DCD300208216 /* DateFormatter+Extensions.swift */,
+				F399924C2CF6A1B50094B63B /* String+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -424,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				F3681A612C6A5F5800A29862 /* DateFormatterExtensionsTests.swift */,
+				F399924E2CF6A4260094B63B /* StringExtensionsTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -571,6 +591,7 @@
 				F3DA93E62CF4190D00208216 /* MovieDetailViewModel.swift in Sources */,
 				F3DA93FC2CF4DFE400208216 /* Movie.swift in Sources */,
 				F3DA93C12CF24D3D00208216 /* APIModels.swift in Sources */,
+				F399924D2CF6A1B50094B63B /* String+Extensions.swift in Sources */,
 				F3681A4E2C6A5F5500A29862 /* TheMovieDBApp.swift in Sources */,
 				F3DA93E32CF416A900208216 /* MoviesTabView.swift in Sources */,
 				F3DA93F12CF4D7E400208216 /* MovieMapper.swift in Sources */,
@@ -591,11 +612,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F399924B2CF69D430094B63B /* MovieDetailViewModelTests.swift in Sources */,
 				F39992462CF554DD0094B63B /* FetchMovieDetailsUseCaseTests.swift in Sources */,
+				F39992492CF69D250094B63B /* MovieListViewModelTests.swift in Sources */,
 				F399923F2CF54EDF0094B63B /* MovieRepositoryTests.swift in Sources */,
 				F39992442CF554580094B63B /* FetchMovieUseCaseTests.swift in Sources */,
 				F39992382CF549B70094B63B /* MockMovieService.swift in Sources */,
 				F39992332CF548400094B63B /* APIClientTests.swift in Sources */,
+				F399924F2CF6A4260094B63B /* StringExtensionsTests.swift in Sources */,
 				F3681A622C6A5F5800A29862 /* DateFormatterExtensionsTests.swift in Sources */,
 				F399923C2CF54B580094B63B /* MockURLProtocol.swift in Sources */,
 				F39992422CF550590094B63B /* XCTestCase+Extensions.swift in Sources */,

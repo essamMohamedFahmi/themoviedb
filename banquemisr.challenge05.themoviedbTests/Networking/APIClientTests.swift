@@ -63,6 +63,38 @@ final class APIClientTests: XCTestCase {
         wait(for: [expectation], timeout: 2)
     }
     
+    func testRequestSuccessForMovieDetail() throws {
+        // Given
+        let expectedMovieDetailDataModel = MovieDetailDataModel(id: 1, title: "Test Movie Detail", overview: "Test Overview", budget: 1, revenue: 1, runtime: 1, imdbID: "2", popularity: 1, posterPath: "img", releaseDate: "22/12")
+                
+        let data = try XCTUnwrap(JSONEncoder().encode(expectedMovieDetailDataModel))
+        let expectation = XCTestExpectation(description: "Request done successfully!")
+          
+        MockURLProtocol.resetMockData()
+        MockURLProtocol.requestHandler = { request in
+            let response = HTTPURLResponse(url: URL(string: "http://example.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)!
+            return (response, data)
+        }
+        
+        // When
+        _ = apiClient.request(.movieDetails(movieID: 1))
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case let .failure(error):
+                    XCTFail("Unexpected failure: \(error)")
+                }
+            }, receiveValue: { (response: MovieDetailDataModel) in
+                // Then
+                XCTAssertEqual(response, expectedMovieDetailDataModel)
+                expectation.fulfill()
+            })
+        
+        // Complete the expectation
+        wait(for: [expectation], timeout: 2)
+    }
+    
     func testRequestFailureCustomError() throws {
         // Given
         let expectation = XCTestExpectation(description: "Request failed!")

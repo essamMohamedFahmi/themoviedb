@@ -14,7 +14,6 @@ final class MovieListViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     @Published var errorMessage = ""
     @Published var hasError = false
-    @Published var isLoading = false
     
     // MARK: - Private Properties
     
@@ -32,7 +31,6 @@ final class MovieListViewModel: ObservableObject {
     // MARK: - Methods
 
     func fetchMovies() {
-        isLoading = true
         let categoryKey = MovieCategoryMapper.toKey(category)
         fetchMoviesUseCase.execute(category: categoryKey)
             .map { movies in
@@ -40,7 +38,6 @@ final class MovieListViewModel: ObservableObject {
             }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
-                self?.isLoading = false
                 if case let .failure(error) = completion {
                     self?.hasError = true
                     self?.errorMessage = error.localizedDescription

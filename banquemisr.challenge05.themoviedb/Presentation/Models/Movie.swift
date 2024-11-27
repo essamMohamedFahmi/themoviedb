@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Identifiable {
+struct Movie: Identifiable, Equatable {
     let id: Int
     let title: String
     let releaseDate: String
@@ -16,7 +16,7 @@ struct Movie: Identifiable {
     init(from movie: MovieDomainModel) {
         self.id = movie.id
         self.title = movie.title
-        self.releaseDate = DateFormatter.displayFormatter.string(from: movie.releaseDate)
+        self.releaseDate = movie.releaseDate.toDisplayDate()
         self.posterURL = movie.posterURL
     }
 }

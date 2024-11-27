@@ -16,19 +16,17 @@ struct MovieMapper {
     
     func mapToDomain(_ movie: MovieDataModel) -> MovieDomainModel {
         let posterURL = URL(string: posterBaseURL + movie.posterPath)!
-        let releaseDate = DateFormatter.apiFormatter.date(from: movie.releaseDate) ?? Date()
         
         return MovieDomainModel(
             id: movie.id,
             title: movie.title,
-            releaseDate: releaseDate,
+            releaseDate: movie.releaseDate,
             posterURL: posterURL
         )
     }
     
     func mapToDomain(_ movieDetail: MovieDetailDataModel) -> MovieDetailDomainModel {
         let posterURL = URL(string: posterBaseURL + movieDetail.posterPath)!
-        let releaseDate = DateFormatter.apiFormatter.date(from: movieDetail.releaseDate) ?? Date()
         
         return MovieDetailDomainModel(
             id: movieDetail.id,
@@ -39,8 +37,8 @@ struct MovieMapper {
             runtime: movieDetail.runtime,
             imdbID: movieDetail.imdbID,
             popularity: movieDetail.popularity,
-            posterURL: posterURL,
-            releaseDate: releaseDate
+            releaseDate: movieDetail.releaseDate,
+            posterURL: posterURL
         )
     }
 }
