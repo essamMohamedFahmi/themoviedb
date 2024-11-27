@@ -18,12 +18,20 @@ struct MovieDetailView: View {
         _viewModel = StateObject(wrappedValue: factory.makeMovieDetailViewModel(for: movieId))
     }
     
+    // MARK: - View Properties
+    
+    var posterImagePlaceholder: some View {
+        Rectangle()
+            .fill(Color.gray.opacity(0.3))
+            .frame(maxWidth: .infinity, maxHeight: 300)
+            .overlay(Text("No Image Available").foregroundColor(.white))
+    }
+    
     // MARK: - Body
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             if let movieDetail = viewModel.movieDetail {
-                // Poster Image
                 if let posterURL = movieDetail.posterURL {
                     AsyncImage(url: posterURL) { image in
                         image.resizable().scaledToFit()
@@ -32,52 +40,39 @@ struct MovieDetailView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: 300)
                 } else {
-                    // Placeholder if no posterURL exists
-                    Rectangle()
-                        .fill(Color.gray.opacity(0.3))
-                        .frame(maxWidth: .infinity, maxHeight: 300)
-                        .overlay(Text("No Image Available").foregroundColor(.white))
+                    posterImagePlaceholder
                 }
                 
-                // Movie Title
                 Text(movieDetail.title)
                     .font(.title)
                     .bold()
                 
-                // Movie Overview
                 Text(movieDetail.overview)
                     .font(.body)
                     .padding(.bottom, 8)
                 
-                // Movie Details
                 VStack(alignment: .leading, spacing: 8) {
-                    // Release Date
-                    Text("Release Date: \(movieDetail.releaseDate)")
+                    Text(movieDetail.releaseDate)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // Budget
-                    Text("Budget: $\(movieDetail.budget)")
+                    Text(movieDetail.budget)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // Revenue
-                    Text("Revenue: $\(movieDetail.revenue)")
+                    Text(movieDetail.revenue)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // Runtime
-                    Text("Runtime: \(movieDetail.runtime) minutes")
+                    Text(movieDetail.runtime)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // Popularity
-                    Text("Popularity: \(String(format: "%.1f", movieDetail.popularity))")
+                    Text(movieDetail.popularity)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                     
-                    // IMDb Link
-                    if let imdbURL = URL(string: "https://www.imdb.com/title/\(movieDetail.imdbID)") {
+                    if let imdbURL = movieDetail.imdbURL {
                         Link("IMDb", destination: imdbURL)
                             .font(.subheadline)
                             .foregroundColor(.blue)

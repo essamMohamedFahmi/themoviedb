@@ -27,10 +27,15 @@ struct MovieListView: View {
 
     var body: some View {
         NavigationView {
-            List(viewModel.movies) { movie in
-                NavigationLink(destination: createMovieDetailView(for: movie.id)) {
-                    MovieRow(movie: movie)
+            VStack {
+                List(viewModel.movies) { movie in
+                    NavigationLink(destination: createMovieDetailView(for: movie.id)) {
+                        MovieRow(movie: movie)
+                            .padding(.vertical, 8)
+                    }
                 }
+                .listStyle(.plain)
+                .background(Color(.systemGroupedBackground).ignoresSafeArea())
             }
             .navigationTitle(category.displayName)
             .onAppear {
@@ -44,6 +49,7 @@ struct MovieListView: View {
                 )
             }
         }
+        .accentColor(.blue)
     }
     
     // MARK: - Methods
