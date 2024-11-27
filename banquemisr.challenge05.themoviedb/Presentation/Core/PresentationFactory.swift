@@ -13,7 +13,8 @@ class PresentationFactory {
 
     init() {
         let movieService = MovieServiceProvider()
-        let movieRepository = MovieRepositoryProvider(service: movieService)
+        let cacheManager = CacheManager()
+        let movieRepository = MovieRepositoryProvider(service: movieService, cache: cacheManager)
         fetchMoviesUseCase = FetchMoviesUseCaseProvider(repository: movieRepository)
         fetchMovieDetailsUseCase = FetchMovieDetailsUseCaseProvider(repository: movieRepository)
     }

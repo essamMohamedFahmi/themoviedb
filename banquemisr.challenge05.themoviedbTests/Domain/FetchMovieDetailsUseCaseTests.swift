@@ -13,19 +13,24 @@ import Combine
 final class FetchMovieDetailsUseCaseTests: XCTestCase {
     private var cancellables: Set<AnyCancellable>!
     private var mockAPIClient: MockAPIClient<MovieEndpoint>!
+    private var mockCacheManager: MockCacheManager!
     private var useCase: FetchMovieDetailsUseCaseProvider!
     
     override func setUp() {
         super.setUp()
+        
         cancellables = []
         mockAPIClient = MockAPIClient<MovieEndpoint>()
-        useCase = FetchMovieDetailsUseCaseProvider(repository: MovieRepositoryProvider(service: MockMovieService(apiClient: mockAPIClient)))
+        mockCacheManager = MockCacheManager()
+        useCase = FetchMovieDetailsUseCaseProvider(repository: MovieRepositoryProvider(service: MockMovieService(apiClient: mockAPIClient), cache: mockCacheManager))
     }
     
     override func tearDown() {
         cancellables = nil
         mockAPIClient = nil
+        mockCacheManager = nil
         useCase = nil
+        
         super.tearDown()
     }
     
@@ -56,7 +61,8 @@ final class FetchMovieDetailsUseCaseTests: XCTestCase {
 
     func testFetchMovieDetailsFailure() {
         // Given
-        mockAPIClient.requestResult = .failure(APIError.decodingFailed)
+        mockAPIClient.requestResult = .failure(MovieDBError.noCache)
+        mockCacheManager.clearCache(for: "movie_detail_1")
 
         // When
         let expectation = XCTestExpectation(description: "Fetch movie details failure")
@@ -64,7 +70,7 @@ final class FetchMovieDetailsUseCaseTests: XCTestCase {
             .sink(receiveCompletion: { completion in
                 // Then
                 if case .failure(let error) = completion {
-                    XCTAssertEqual(error, APIError.decodingFailed)
+                    XCTAssertEqual(error, MovieDBError.noCache)
                     expectation.fulfill()
                 } else {
                     XCTFail("Expected failure but got success")

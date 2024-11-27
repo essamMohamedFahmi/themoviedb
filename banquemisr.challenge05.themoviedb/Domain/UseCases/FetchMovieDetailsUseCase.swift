@@ -8,7 +8,7 @@
 import Combine
 
 protocol FetchMovieDetailsUseCase {
-    func execute(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, APIError>
+    func execute(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, MovieDBError>
 }
 
 final class FetchMovieDetailsUseCaseProvider: FetchMovieDetailsUseCase {
@@ -18,7 +18,7 @@ final class FetchMovieDetailsUseCaseProvider: FetchMovieDetailsUseCase {
         self.repository = repository
     }
 
-    func execute(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, APIError> {
+    func execute(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, MovieDBError> {
         return repository.fetchMovieDetails(movieId: movieId)
     }
 }

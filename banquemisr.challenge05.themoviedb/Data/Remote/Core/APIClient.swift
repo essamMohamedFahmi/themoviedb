@@ -10,7 +10,7 @@ import Foundation
 
 protocol APIClient {
     associatedtype EndpointType: APIEndpoint
-    func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, APIError>
+    func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, MovieDBError>
 }
 
 protocol URLSessionProtocol {
@@ -30,7 +30,7 @@ class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
 
     // MARK: - Request
 
-    func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, APIError>
+    func request<T: Decodable>(_ endpoint: EndpointType) -> AnyPublisher<T, MovieDBError>
     {
         let url = endpoint.baseURL
             .appendingPathComponent(endpoint.path)
@@ -46,19 +46,19 @@ class URLSessionAPIClient<EndpointType: APIEndpoint>: APIClient {
             .subscribe(on: DispatchQueue.global(qos: .background))
             .tryMap { data, response -> Data in
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    throw APIError.requestFailed
+                    throw MovieDBError.requestFailed
                 }
 
                 guard (200 ... 299).contains(httpResponse.statusCode) else {
-                    throw APIError.customError(statusCode: httpResponse.statusCode)
+                    throw MovieDBError.customError(statusCode: httpResponse.statusCode)
                 }
 
                 return data
             }
             .decode(type: T.self, decoder: JSONDecoder())
-            .mapError({ error -> APIError in
-                guard let error = error as? APIError else {
-                    return APIError.decodingFailed
+            .mapError({ error -> MovieDBError in
+                guard let error = error as? MovieDBError else {
+                    return MovieDBError.decodingFailed
                 }
                 return error
             })

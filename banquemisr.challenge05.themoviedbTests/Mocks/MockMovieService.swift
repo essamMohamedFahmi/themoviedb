@@ -17,13 +17,13 @@ class MockMovieService: MovieService {
         self.apiClient = apiClient
     }
 
-    func fetchMovies(category: String) -> AnyPublisher<MovieList, APIError> {
+    func fetchMovies(category: String) -> AnyPublisher<MovieList, MovieDBError> {
         return apiClient.request(
             .fetchMovies(category: category)
         )
     }
     
-    func movieDetails(movieID: Int) -> AnyPublisher<MovieDetailDataModel, APIError> {
+    func movieDetails(movieID: Int) -> AnyPublisher<MovieDetailDataModel, MovieDBError> {
         return apiClient.request(
             .movieDetails(movieID: movieID)
         )

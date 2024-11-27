@@ -13,8 +13,9 @@ import Combine
 final class MovieDetailViewModelTests: XCTestCase {
     // MARK: Properties
     
-    var viewModel: MovieDetailViewModel!
-    var mockAPIClient: MockAPIClient<MovieEndpoint>!
+    private var viewModel: MovieDetailViewModel!
+    private var mockAPIClient: MockAPIClient<MovieEndpoint>!
+    private var mockCacheManager: MockCacheManager!
     
     // MARK: - Setup and TearDown
     
@@ -22,13 +23,14 @@ final class MovieDetailViewModelTests: XCTestCase {
         super.setUp()
         
         mockAPIClient = MockAPIClient<MovieEndpoint>()
-        let useCase = FetchMovieDetailsUseCaseProvider(repository: MovieRepositoryProvider(service: MockMovieService(apiClient: mockAPIClient)))
-        
+        mockCacheManager = MockCacheManager()
+        let useCase = FetchMovieDetailsUseCaseProvider(repository: MovieRepositoryProvider(service: MockMovieService(apiClient: mockAPIClient), cache: mockCacheManager))
         viewModel = MovieDetailViewModel(movieId: 1, fetchMovieDetailsUseCase: useCase)
     }
     
     override func tearDown() {
         mockAPIClient = nil
+        mockCacheManager = nil
         viewModel = nil
         
         super.tearDown()
@@ -55,12 +57,13 @@ final class MovieDetailViewModelTests: XCTestCase {
     
     func testFetchMovieDetailsFailure() throws {
         // Given
-        mockAPIClient.requestResult = .failure(APIError.decodingFailed)
-        
+        mockAPIClient.requestResult = .failure(MovieDBError.noCache)
+        mockCacheManager.clearCache(for: "movie_detail_1")
+
         // When
         viewModel.fetchMovieDetails()
         
         // Then
-        waitUntil(viewModel.$errorMessage, equals: APIError.decodingFailed.localizedDescription)
+        waitUntil(viewModel.$errorMessage, equals: MovieDBError.noCache.localizedDescription)
     }
 }

@@ -28,6 +28,8 @@
 		F399924B2CF69D430094B63B /* MovieDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399924A2CF69D430094B63B /* MovieDetailViewModelTests.swift */; };
 		F399924D2CF6A1B50094B63B /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399924C2CF6A1B50094B63B /* String+Extensions.swift */; };
 		F399924F2CF6A4260094B63B /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399924E2CF6A4260094B63B /* StringExtensionsTests.swift */; };
+		F399925F2CF6B1460094B63B /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F399925E2CF6B1460094B63B /* CacheManager.swift */; };
+		F39992622CF7774C0094B63B /* MockCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39992612CF7774C0094B63B /* MockCacheManager.swift */; };
 		F3DA93BD2CF24D0A00208216 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93BC2CF24D0A00208216 /* APIClient.swift */; };
 		F3DA93BF2CF24D2000208216 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93BE2CF24D2000208216 /* APIEndpoint.swift */; };
 		F3DA93C12CF24D3D00208216 /* APIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DA93C02CF24D3D00208216 /* APIModels.swift */; };
@@ -96,6 +98,8 @@
 		F399924A2CF69D430094B63B /* MovieDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelTests.swift; sourceTree = "<group>"; };
 		F399924C2CF6A1B50094B63B /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		F399924E2CF6A4260094B63B /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
+		F399925E2CF6B1460094B63B /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		F39992612CF7774C0094B63B /* MockCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCacheManager.swift; sourceTree = "<group>"; };
 		F3DA93BC2CF24D0A00208216 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F3DA93BE2CF24D2000208216 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		F3DA93C02CF24D3D00208216 /* APIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModels.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				F39992392CF54B580094B63B /* MockURLSession.swift */,
 				F39992352CF549500094B63B /* MockAPIClient.swift */,
 				F39992372CF549B70094B63B /* MockMovieService.swift */,
+				F39992612CF7774C0094B63B /* MockCacheManager.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -290,11 +295,20 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		F39992602CF6B2D70094B63B /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				F399925E2CF6B1460094B63B /* CacheManager.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
 		F39F02012CF03023001ED4D5 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				F3DA93EF2CF4D7D600208216 /* Mappers */,
 				F3DA93D22CF2A9C800208216 /* Repositories */,
+				F39992602CF6B2D70094B63B /* Local */,
 				F39F02062CF03069001ED4D5 /* Remote */,
 			);
 			path = Data;
@@ -598,6 +612,7 @@
 				F3DA93F42CF4D81E00208216 /* MovieDomainModel.swift in Sources */,
 				F3DA93FE2CF4E4C700208216 /* MovieDetail.swift in Sources */,
 				F3DA93F92CF4DCD300208216 /* DateFormatter+Extensions.swift in Sources */,
+				F399925F2CF6B1460094B63B /* CacheManager.swift in Sources */,
 				F3DA93BD2CF24D0A00208216 /* APIClient.swift in Sources */,
 				F3DA93BF2CF24D2000208216 /* APIEndpoint.swift in Sources */,
 				F399922C2CF4EE820094B63B /* MovieCategoryMapper.swift in Sources */,
@@ -614,6 +629,7 @@
 			files = (
 				F399924B2CF69D430094B63B /* MovieDetailViewModelTests.swift in Sources */,
 				F39992462CF554DD0094B63B /* FetchMovieDetailsUseCaseTests.swift in Sources */,
+				F39992622CF7774C0094B63B /* MockCacheManager.swift in Sources */,
 				F39992492CF69D250094B63B /* MovieListViewModelTests.swift in Sources */,
 				F399923F2CF54EDF0094B63B /* MovieRepositoryTests.swift in Sources */,
 				F39992442CF554580094B63B /* FetchMovieUseCaseTests.swift in Sources */,

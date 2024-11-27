@@ -7,8 +7,9 @@
 
 import Foundation
 
-enum APIError: Error, Equatable {
+enum MovieDBError: Error, Equatable {
     case requestFailed
     case decodingFailed
+    case noCache
     case customError(statusCode: Int)
 }

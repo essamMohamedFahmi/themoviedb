@@ -112,7 +112,7 @@ final class APIClientTests: XCTestCase {
                     XCTFail("Unexpected success")
                 case let .failure(error):
                     // Then
-                    XCTAssertEqual(error, APIError.customError(statusCode: 422))
+                    XCTAssertEqual(error, MovieDBError.customError(statusCode: 422))
                     expectation.fulfill()
                 }
             }, receiveValue: { (response: MovieDetailDataModel) in
@@ -138,7 +138,7 @@ final class APIClientTests: XCTestCase {
                     XCTFail("Unexpected success")
                 case let .failure(error):
                     // Then
-                    XCTAssertEqual(error, APIError.decodingFailed)
+                    XCTAssertEqual(error, MovieDBError.decodingFailed)
                     expectation.fulfill()
                 }
             }, receiveValue: { (response: MovieDetailDataModel) in
@@ -164,7 +164,7 @@ final class APIClientTests: XCTestCase {
                     XCTFail("Unexpected success")
                 case let .failure(error):
                     // Then
-                    XCTAssertEqual(error, APIError.requestFailed)
+                    XCTAssertEqual(error, MovieDBError.requestFailed)
                     expectation.fulfill()
                 }
             }, receiveValue: { (response: MovieDetailDataModel) in

@@ -8,6 +8,6 @@
 import Combine
 
 protocol MovieRepository {
-    func fetchMovies(category: String) -> AnyPublisher<[MovieDomainModel], APIError>
-    func fetchMovieDetails(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, APIError>
+    func fetchMovies(category: String) -> AnyPublisher<[MovieDomainModel], MovieDBError>
+    func fetchMovieDetails(movieId: Int) -> AnyPublisher<MovieDetailDomainModel, MovieDBError>
 }
